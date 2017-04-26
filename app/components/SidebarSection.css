@@ -1,0 +1,15 @@
+.__item {
+  width: 100%;
+  color:#333;
+  background-color:#fff;
+  border-top: 0;
+  border-right: 0;
+  border-left: 0;
+  border-bottom: #ccc 1px solid;
+  text-align:left;
+  outline:none;
+}
+
+.__item_wrap {
+  margin:0.5rem 0;
+}
