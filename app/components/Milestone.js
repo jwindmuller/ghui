@@ -18,23 +18,17 @@ export default class MainPage extends Component {
     this._getIssues = this._getIssues.bind(this);
     this._issuesReceived = this._issuesReceived.bind(this);
     this._renderIssue = this._renderIssue.bind(this);
-    this._reload = this._reload.bind(this);
     this.state = {
       issues: []
     }
   }
 
   componentDidMount() {
-    this.setState({milestone:this.props.milestone}, this._reload);
+    this.setState({milestone:this.props.milestone, issues:[]}, this._getIssues);
   }
 
   componentWillReceiveProps(nextProps) {
-    this.setState({milestone:nextProps.milestone}, this._reload);
-  }
-
-  _reload() {
-    this.setState({issues:[]});
-    this._getIssues();
+    this.setState({milestone:nextProps.milestone, issues:[]}, this._getIssues);
   }
 
   _getIssues() {
