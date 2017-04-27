@@ -1,6 +1,7 @@
 import React, {
   Component
 } from 'react';
+import PropTypes from 'prop-types';
 import Settings from 'electron-settings';
 import MilestoneStyles from './Milestone.css';
 import Issue from './Issue';
@@ -8,8 +9,8 @@ import Issue from './Issue';
 export default class MainPage extends Component {
 
   static propTypes = {
-    // milestone: React.PropTypes.obj,
-    // repo: React.PropTypes.obj
+    milestone: PropTypes.object,
+    repo: PropTypes.object
   };
 
   constructor() {

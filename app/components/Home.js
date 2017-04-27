@@ -1,5 +1,6 @@
 // @flow
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import { Redirect } from 'react-router';
 import styles from './Home.css';
@@ -9,7 +10,7 @@ import GithubLogin from './GithubLogin';
 export default class Home extends Component {
 
   static propTypes = {
-    onTokenReceived: React.PropTypes.func
+    onTokenReceived: PropTypes.func
   };
 
   constructor() {

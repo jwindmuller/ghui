@@ -192,6 +192,7 @@
     "github-oauth": "^0.2.2",
     "history": "^4.6.1",
     "octonode": "^0.7.12",
+    "prop-types": "^15.5.8",
     "react": "^15.5.4",
     "react-dom": "^15.5.4",
     "react-flexbox-grid": "^1.1.1",
