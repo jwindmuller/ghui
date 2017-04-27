@@ -25,11 +25,11 @@ export default class MainPage extends Component {
   }
 
   componentDidMount() {
-    this._reload();
+    this.setState({milestone:this.props.milestone}, this._reload);
   }
 
   componentWillReceiveProps(nextProps) {
-    this._reload();
+    this.setState({milestone:nextProps.milestone}, this._reload);
   }
 
   _reload() {
@@ -39,7 +39,7 @@ export default class MainPage extends Component {
 
   _getIssues() {
     this.props.repo.issues({
-      milestone: this.props.milestone.number,
+      milestone: this.state.milestone.number,
       state: 'all'
     }, this._issuesReceived);
   }
