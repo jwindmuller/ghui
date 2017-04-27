@@ -8,4 +8,5 @@
   background: #fff;
   height:100%;
   padding: .5rem 0 .5rem .5rem;
+  border-right: #ccc 1px solid;
 }

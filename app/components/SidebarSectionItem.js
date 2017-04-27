@@ -17,7 +17,9 @@ export default class SidebarSectionItem extends Component {
         className={SidebarSectionStyles.__item}
         onClick={this.onItemSelect}>
         <p className={SidebarSectionStyles.__item_wrap}>
-          <strong>{this.props.item.title}</strong>
+          <strong>
+            {this.props.item.title}
+          </strong>
           {
             this.props.item.description &&
               <span> - {this.props.item.description}</span>

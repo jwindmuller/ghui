@@ -6,10 +6,12 @@ let github = require('octonode');
 import { Grid, Row, Col } from 'react-flexbox-grid';
 import styles from './MainPage.css';
 import SidebarSection from '../components/SidebarSection';
+import Milestone from '../components/Milestone';
 
 export default class MainPage extends Component {
 
   gh = null
+  rpm = null
 
   constructor() {
     super();
@@ -45,7 +47,7 @@ export default class MainPage extends Component {
       <Grid fluid className={styles.MainPage__container}>
         <Row className={styles.MainPage__container}>
           <Col xs={3} md={3} className={styles.MainPage__sidebar}>{this.renderMilestones()}</Col>
-          <Col xs={7} md={7}>Hi {this._renderCurrentMilestone()}</Col>
+          <Col xs={9} md={9}>{this._renderCurrentMilestone()}</Col>
         </Row>
       </Grid>
     );
@@ -53,8 +55,8 @@ export default class MainPage extends Component {
 
   loadMilestones() {
     const client = this._getGithubClient();
-    let rpm = client.repo('rpmsoftware/rpm');
-    rpm.milestones(this._milestonesReceived);
+    this.rpm = client.repo('rpmsoftware/rpm');
+    this.rpm.milestones(this._milestonesReceived);
   }
 
   _milestonesReceived(error, milestones, headers) {
@@ -69,7 +71,7 @@ export default class MainPage extends Component {
   renderMilestones() {
     return (
       <SidebarSection
-        title={'Changelogs'}
+        title={'Milestones'}
         items={this.state.milestones}
         onItemSelect={this._milestoneSelected} />
     );
@@ -96,10 +98,10 @@ export default class MainPage extends Component {
     if (this.state.currentMilestone === false) {
       return null;
     }
-
     const milestone = this.state.milestones[this.state.currentMilestone];
+
     return (
-      <span>{milestone.title}</span>
+      <Milestone milestone={milestone} repo={this.rpm} />
     );
   }
 
