@@ -7,14 +7,22 @@
 }
 
 .__title {
-  display: flex;
   font-size: 40px;
   margin: 0;
   padding: 10px;
   color:#333;
   border-bottom: #ccc 1px solid;
 }
-
+.__title_details {
+    font-size: 13px;
+    display: inline-block;
+    vertical-align: bottom;
+    position: relative;
+    top: -8px;
+    left:5px;
+    font-weight: normal;
+    font-style: italic;
+}
 .__issues_container {
   flex:1;
   display: flex;

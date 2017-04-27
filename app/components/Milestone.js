@@ -45,7 +45,15 @@ export default class MainPage extends Component {
   render() {
     return (
       <div className={MilestoneStyles.__container}>
-        <h1 className={MilestoneStyles.__title}>{this.props.milestone.title}</h1>
+        <h1 className={MilestoneStyles.__title}>
+          {this.props.milestone.title}
+          <span className={MilestoneStyles.__title_details}>
+            {this.props.milestone.open_issues} open issues
+            {this.props.milestone.closed_issues > 0 &&
+              <span>, {this.props.milestone.closed_issues} closed.</span>
+            }
+          </span>
+        </h1>
         <div className={MilestoneStyles.__issues_container}>
           {
             this.state.issues.map(this._renderIssue)
