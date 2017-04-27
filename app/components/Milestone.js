@@ -18,12 +18,22 @@ export default class MainPage extends Component {
     this._getIssues = this._getIssues.bind(this);
     this._issuesReceived = this._issuesReceived.bind(this);
     this._renderIssue = this._renderIssue.bind(this);
+    this._reload = this._reload.bind(this);
     this.state = {
       issues: []
     }
   }
 
+  componentDidMount() {
+    this._reload();
+  }
+
   componentWillReceiveProps(nextProps) {
+    this._reload();
+  }
+
+  _reload() {
+    this.setState({issues:[]});
     this._getIssues();
   }
 
@@ -53,7 +63,7 @@ export default class MainPage extends Component {
 
   _renderIssue(issue, index) {
     return (
-      <Issue issue={issue} index={index} />
+      <Issue issue={issue} index={index} key={issue.id}/>
     )
   }
 }

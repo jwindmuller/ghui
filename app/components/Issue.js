@@ -14,12 +14,32 @@ export default class Issue extends Component {
 
   constructor() {
     super();
+    this._checkedChanged = this._checkedChanged.bind(this);
+    this.state = {
+      checked: true
+    };
+  }
+
+  _checkedChanged() {
+    debugger;
   }
 
   render() {
+    let checkboxProps = {
+      type: 'checkbox',
+      onChange: this._checkedChanged
+    };
+    if (this.state.checked) {
+      checkboxProps.checked = 'checked';
+    }
     return (
       <div className={IssueStyles.__container}>
-        <h2 className={IssueStyles.__title}>{this.props.issue.title}</h2>
+        <h2 className={IssueStyles.__title}>
+          <label>
+            <input {...checkboxProps}/>
+            {this.props.issue.title}
+          </label>
+        </h2>
 
       </div>
     );
