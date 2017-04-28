@@ -19,7 +19,15 @@ export default {
           cacheDirectory: true
         }
       }
-    }]
+    }],
+    loaders: [
+      {
+        test: /(\.scss|\.css)$/,
+        loader: 'style!css?modules!sass',
+        include: __dirname + './node_modules/react-flexbox-grid',
+        // exclude: /(node_modules)/
+      },
+    ]
   },
 
   output: {
@@ -41,11 +49,7 @@ export default {
   },
 
   plugins: [
-    new webpack.NamedModulesPlugin(),
-    new webpack.NormalModuleReplacementPlugin(
-      /node_modules\/flexboxgrid\/dist\/flexboxgrid\.css/,
-      require.resolve('./app/custom-flex-box-grid.css')
-    )
+    new webpack.NamedModulesPlugin()
   ],
 
   node : {

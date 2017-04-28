@@ -3,7 +3,7 @@ import React, {
 } from 'react';
 import Settings from 'electron-settings';
 let github = require('octonode');
-import { Grid, Row, Col } from 'react-flexbox-grid';
+
 import styles from './MainPage.css';
 import SidebarSection from '../components/SidebarSection';
 import Milestone from '../components/Milestone';
@@ -44,12 +44,16 @@ export default class MainPage extends Component {
 
   render() {
     return (
-      <Grid fluid className={styles.MainPage__container}>
-        <Row className={styles.MainPage__container}>
-          <Col xs={3} md={3} className={styles.MainPage__sidebar}>{this.renderMilestones()}</Col>
-          <Col xs={9} md={9}>{this._renderCurrentMilestone()}</Col>
-        </Row>
-      </Grid>
+      <div fluid className={styles.MainPage__container}>
+        <div className={styles.__wrapper}>
+          <div className={styles.__sidebar}>
+            {this.renderMilestones()}
+          </div>
+          <div className={styles.__main}>
+            {this._renderCurrentMilestone()}
+          </div>
+        </div>
+      </div>
     );
   }
 

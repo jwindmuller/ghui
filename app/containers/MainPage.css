@@ -4,9 +4,23 @@
   height:100%;
   width:100%;
 }
-.MainPage__sidebar {
+.__wrapper {
+  display: flex;
+  flex:1;
+  height: 100%;
+  width: 100%;
+}
+
+.__sidebar {
   background: #fff;
   height:100%;
   padding: .5rem 0 .5rem .5rem;
   border-right: #ccc 1px solid;
+  display: flex;
+  flex:0.3;
+}
+.__main{
+  display: flex;
+  flex:0.7;
+  height: 100%;
 }

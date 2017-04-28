@@ -3,19 +3,22 @@
   width: 100%;
   height: 100%;
   display: flex;
-  flex-direction: column
+  flex-direction: column;
 }
+
 .__title {
   display: flex;
   font-size: 40px;
   margin: 0;
-  padding: 10px 0;
+  padding: 10px;
   color:#333;
   border-bottom: #ccc 1px solid;
 }
+
 .__issues_container {
   flex:1;
   display: flex;
   flex-direction: column;
   overflow: auto;
+  padding: 0 10px;
 }
