@@ -21,7 +21,7 @@ export default class Issue extends Component {
   }
 
   _checkedChanged() {
-    debugger;
+    this.setState({checked: !this.state.checked});
   }
 
   render() {
