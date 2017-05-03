@@ -115,7 +115,7 @@ export default class MainPage extends Component {
         MilestoneStyles.__pagination_button
       ]
     };
-    
+
     if (text !== undefined) {
       options.className.push(MilestoneStyles.__pagination_button_text);
     } else {
@@ -132,7 +132,7 @@ export default class MainPage extends Component {
       options.disabled = true;
     }
     options.className = options.className.join(' ');
-
+    options.key = `button-${page}-${text}`;
     return (
       <button {...options} data-page={page}>
         {text}
