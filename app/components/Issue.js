@@ -15,6 +15,7 @@ export default class Issue extends Component {
   constructor() {
     super();
     this._checkedChanged = this._checkedChanged.bind(this);
+    this._renderLabels = this._renderLabels.bind(this);
     this.state = {
       checked: true
     };
@@ -25,23 +26,37 @@ export default class Issue extends Component {
   }
 
   render() {
-    let checkboxProps = {
-      type: 'checkbox',
-      onChange: this._checkedChanged
-    };
-    if (this.state.checked) {
-      checkboxProps.checked = 'checked';
-    }
     return (
       <div className={IssueStyles.__container}>
         <h2 className={IssueStyles.__title}>
-          <label>
-            <input {...checkboxProps}/>
-            {this.props.issue.title}
-          </label>
+          {this.props.issue.title}
         </h2>
-
+        {this._renderLabels()}
       </div>
     );
+  }
+
+  _renderLabels() {
+    let labels = this.props.issue.labels.map(function(label) {
+      let labelProps = {
+        className: IssueStyles.__label,
+        style: {
+          backgroundColor: `#${label.color}`
+        },
+        key: `label-${label.id}`
+      }
+
+      return (
+        <span {...labelProps}>
+          {label.name}
+        </span>
+      );
+    });
+
+    return(
+      <div className={IssueStyles.__labels_container}>
+        {labels}
+      </div>
+    )
   }
 }

@@ -99,7 +99,7 @@ export default class MainPage extends Component {
     if (!this.state.headers) {
       return;
     }
-    console.log('lastPage', this.state.lastPage);
+
     let buttons = [];
     for (let i = 1; i <= this.state.lastPage; i++) {
       buttons.push(this._getPaginationButton(i));
