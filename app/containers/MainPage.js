@@ -44,7 +44,7 @@ export default class MainPage extends Component {
 
   render() {
     return (
-      <div fluid className={styles.MainPage__container}>
+      <div className={styles.MainPage__container}>
         <div className={styles.__wrapper}>
           <div className={styles.__sidebar}>
             {this.renderMilestones()}
