@@ -5,6 +5,7 @@ import PropTypes from 'prop-types';
 import Settings from 'electron-settings';
 import MilestoneStyles from './Milestone.css';
 import Issue from './Issue';
+import IssuesFilter  from './IssuesFilter';
 
 export default class MainPage extends Component {
 
@@ -20,18 +21,22 @@ export default class MainPage extends Component {
     this._renderIssue = this._renderIssue.bind(this);
     this._renderPagination = this._renderPagination.bind(this);
     this._changePage = this._changePage.bind(this);
+    this._labelsReceived = this._labelsReceived.bind(this);
+
     this.state = {
       issues: [],
+      labels: [],
       page: 1
     }
   }
 
   componentDidMount() {
-    this.setState({milestone:this.props.milestone, issues:[], lastPage:-1}, this._getIssues);
+    this.setState({milestone:this.props.milestone, issues:[], page: 1, lastPage:-1}, this._getIssues);
+    this._getLabels();
   }
 
   componentWillReceiveProps(nextProps) {
-    this.setState({milestone:nextProps.milestone, issues:[], lastPage:-1}, this._getIssues);
+    this.setState({milestone:nextProps.milestone, issues:[], page: 1, lastPage:-1}, this._getIssues);
   }
 
   _getIssues() {
@@ -40,6 +45,14 @@ export default class MainPage extends Component {
       state: 'all',
       page: this.state.page
     }, this._issuesReceived);
+  }
+
+  _getLabels() {
+    this.props.repo.labels(this._labelsReceived);
+  }
+
+  _labelsReceived(error, labels, headers) {
+    this.setState({labels});
   }
 
   _issuesReceived(error, issues, headers) {
@@ -77,6 +90,8 @@ export default class MainPage extends Component {
             }
           </span>
         </h1>
+          <IssuesFilter
+            labels={this.state.labels} />
         <div className={MilestoneStyles.__issues_container}>
           {
             this.state.issues.map(this._renderIssue)

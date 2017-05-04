@@ -4,7 +4,7 @@ import React, {
 import PropTypes from 'prop-types';
 import Settings from 'electron-settings';
 import IssueStyles from './Issue.css';
-import Color from 'color';
+import GithubLabel from './GithubLabel';
 
 export default class Issue extends Component {
 
@@ -38,27 +38,9 @@ export default class Issue extends Component {
   }
 
   _renderLabels() {
-    let labels = this.props.issue.labels.map(function(label) {
-      var labelColor = new Color(`#${label.color}`);
-      let labelProps = {
-        className: [IssueStyles.__label],
-        style: {
-          backgroundColor: labelColor.string()
-        },
-        key: `label-${label.id}`
-      };
-      var contrastWhite = labelColor.contrast(new Color('#fff'));
-      var contrastBlack = labelColor.contrast(new Color('#000'));
-
-      if (contrastWhite < 2 && contrastWhite < contrastBlack) {
-        labelProps.className.push(IssueStyles.__label_inverse);
-      }
-      labelProps.className = labelProps.className.join(' ');
-
+    let labels = this.props.issue.labels.map(label => {
       return (
-        <span {...labelProps}>
-          {label.name}
-        </span>
+        <GithubLabel label={label} key={`label-${label.id}`} />
       );
     });
 

@@ -1,0 +1,7 @@
+.__option_container {
+  padding: 5px;
+  border-bottom:#ccc 1px solid;
+}
+.__option_container:last-child {
+  /*border-bottom: none;*/
+}
